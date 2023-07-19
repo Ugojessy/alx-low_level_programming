@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include "main.h"
 
 /**
@@ -15,5 +14,8 @@ int _isupper(int c)
 		return (0);
 	else
 		return (1);
+}
+
+
 
 
