@@ -1,19 +1,30 @@
 #include "main.h"
 
 /**
- * malloc_checked - allocates a memory using malloc
- * @b: size
+ * create_array - creates an array of chars and initializes it
+ * with a specific char
+ * @size: the size of the array
+ * @c: the character to initilaize with
  *
- * Return: pointer to the allocated memory
+ * Return: NULL if size is zero or fails to allocate and
+ * a pointer to the array if successful
  */
-void *malloc_checked(unsigned int b)
+char *create_array(unsigned int size, char c)
 {
-	int *s;
+	char *arr;
+	unsigned int i;
 
-	s = malloc(b);
-	if (s == NULL)
-	{
-		exit(98);
-	}
-	return (s);
+	if (size == 0)
+		return (NULL);
+
+	arr = malloc(size * sizeof(char));
+
+	if (arr == NULL)
+		return (NULL);
+
+	for (i = 0; i < size; i++)
+		arr[i] = c;
+
+	return (arr);
 }
+
