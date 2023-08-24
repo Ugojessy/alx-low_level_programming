@@ -1,27 +1,25 @@
 #include "lists.h"
 
 /**
- * free_list - adds a new node at the end of the list_t list
- * @head: pointer to list
+ * print_list - prints a list
+ * @h: the list
  *
- * Return: void
+ * Return: number of nodes
  */
-void free_list(list_t *head)
+size_t print_list(const list_t *h)
 {
-	list_t *temp = head, *temp2;
+	const list_t *list = h;
+	size_t count = 0;
 
-	if (head)
+	while (list)
 	{
-		while (temp->next)
-		{
-			temp2 = temp;
-			temp = temp->next;
-			free(temp2->str);
-			free(temp2);
-		}
-
-		free(temp->str);
-		free(temp);
+		if (list->str)
+			printf("[%d] %s\n", list->len, list->str);
+		else
+			printf("[0] (nil)\n");
+		count++;
+		list = list->next;
 	}
-}
 
+	return (count);
+}
